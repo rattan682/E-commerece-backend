@@ -80,9 +80,11 @@ app.use("/category",categoryRouter)
 app.use("/user",userRouter)
 app.use("/cart",CartRouter)
 app.use("/orders",orderRouter)
+
 app.get('*', (req, res) =>
   res.sendFile(path.resolve('build', 'index.html'))
 );
+
 app.listen(8080,()=>{
     console.log("server is runnning")
 })
