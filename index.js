@@ -70,7 +70,6 @@ async function database(){
       order_id:orderid
     }
   });
-
   res.send({
     clientSecret: paymentIntent.client_secret,
   });
