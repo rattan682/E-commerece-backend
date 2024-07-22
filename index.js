@@ -39,6 +39,7 @@ app.post('/webhook', express.raw({type: 'application/json'}), async(request, res
     case 'payment_intent.succeeded':
       const paymentIntentSucceeded = event.data.object;
       const order=await ordersModel.findById(paymentIntentSucceeded.metadata.order_id)
+      console.log(order)
       order.paymentstatus='received'
       await order.save()
       // Then define and call a function to handle the event payment_intent.succeeded
