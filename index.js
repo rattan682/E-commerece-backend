@@ -60,6 +60,7 @@ async function database(){
 }
  app.post("/create-payment-intent",async(req,res)=>{
   const {amount,orderid} = req.body;
+  console.log(amount)
   const paymentIntent = await stripe.paymentIntents.create({
     amount: Math.round(amount*100),
     currency: "inr",

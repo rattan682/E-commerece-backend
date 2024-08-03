@@ -30,6 +30,16 @@ const getuserinfo=async(req,res)=>{
     res.send(req.user)
 
 }
+const signoutuser=async(req,res)=>{
+    res.cookie('jwt', "", { 
+
+        expires: new Date(Date.now()), 
+        httpOnly: true, 
+        secure: process.env.NODE_ENV === 'production', // Ensures the cookie is only sent over HTTPS in production
+        sameSite: 'strict' 
+      });
+      return res.status(200).json()
+}
 const loginuser=async(req,res)=>{
     try {
         const email=req.body.email
@@ -57,5 +67,6 @@ const loginuser=async(req,res)=>{
 module.exports={
     signupUser,
     loginuser,
-    getuserinfo
+    getuserinfo,
+    signoutuser
 }
